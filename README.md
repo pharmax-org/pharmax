@@ -29,7 +29,18 @@ part of the current public package surface.
 
 ## Install
 
-Install from GitHub:
+Install from R-Universe:
+
+```r
+options(repos = c(
+  pharmax = "https://pharmax-org.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
+
+install.packages(c("pharmax", "pharmax.viz", "pharmax.ml"))
+```
+
+Or install directly from GitHub:
 
 ```r
 pak::pak("pharmax-org/pharmax/packages/pharmax")
@@ -86,11 +97,12 @@ pk_ml$ETA_CL <- 0.6 * scale(pk_ml$COV_WT)[, 1] + rnorm(80, sd = 0.3)
 px_covariate(pk_ml, method = "auto", n_top = 3)
 ```
 
-## R-Universe Status
+## R-Universe
 
-The R-Universe registry configuration is maintained in
-[`pharmax-org.r-universe.dev`](https://github.com/pharmax-org/pharmax-org.r-universe.dev)
-for the current public packages.
+The live package registry is
+[`pharmax-org.r-universe.dev`](https://pharmax-org.r-universe.dev). Its
+configuration is maintained in the public registry repository
+[`pharmax-org/pharmax-org.r-universe.dev`](https://github.com/pharmax-org/pharmax-org.r-universe.dev).
 
 ## License
 
