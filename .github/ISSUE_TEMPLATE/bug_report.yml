@@ -1,0 +1,54 @@
+name: Bug report
+description: Report a reproducible problem in a pharmax package.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      options:
+        - pharmax.viz
+        - pharmax.ml
+        - site/docs
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reprex
+    attributes:
+      label: Minimal reproducible example
+      description: Use public or synthetic data only.
+      render: r
+    validations:
+      required: true
+  - type: input
+    id: r_version
+    attributes:
+      label: R version
+      placeholder: "R 4.5.3"
+    validations:
+      required: true
+  - type: input
+    id: package_version
+    attributes:
+      label: Package version
+      placeholder: "0.2.0.9000"
+    validations:
+      required: true
+  - type: checkboxes
+    id: data_safety
+    attributes:
+      label: Data safety
+      options:
+        - label: This issue uses public or synthetic data only.
+          required: true
+        - label: This issue does not include patient-level, sponsor, employer, or proprietary data.
+          required: true

@@ -1,0 +1,46 @@
+name: Feature request
+description: Suggest a focused package, docs, or workflow improvement.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package or area
+      options:
+        - pharmax.viz
+        - pharmax.ml
+        - site/docs
+        - release/CI
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Workflow gap
+      description: What pharmacometric workflow problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed behavior
+      description: Describe the smallest useful version of the feature.
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example input or usage
+      description: Use public or synthetic examples only.
+      render: r
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This request does not require proprietary or clinical trial data.
+          required: true
+        - label: This request is framed as exploratory/public-alpha functionality, not formal regulatory validation.
+          required: true

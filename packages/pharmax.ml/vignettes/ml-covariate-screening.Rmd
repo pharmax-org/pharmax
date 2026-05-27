@@ -1,0 +1,68 @@
+---
+title: "ML Covariate Screening With Synthetic PK Parameters"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ML Covariate Screening With Synthetic PK Parameters}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+# Purpose
+
+This vignette demonstrates the public `pharmax.ml` workflow using
+synthetic data with a known covariate signal.
+
+The example is exploratory decision support only. It is not regulatory
+validation and does not use proprietary clinical data.
+
+```{r setup}
+library(pharmax.ml)
+```
+
+# Synthetic Data
+
+```{r}
+set.seed(2026)
+n <- 120
+demo <- data.frame(
+  COV_WT = rnorm(n, 70, 10),
+  COV_AGE = rnorm(n, 55, 12),
+  COV_ALB = rnorm(n, 4.2, 0.4)
+)
+demo$ETA_CL <- 0.7 * scale(demo$COV_WT)[, 1] + rnorm(n, sd = 0.3)
+demo$ETA_V <- 0.5 * scale(demo$COV_ALB)[, 1] + rnorm(n, sd = 0.4)
+```
+
+# Data Quality
+
+```{r}
+quality <- px_data_quality(demo)
+quality
+```
+
+# Covariate Screening
+
+```{r}
+screen <- px_covariate(demo, method = "auto", n_top = 3)
+screen
+```
+
+# Conformal Prediction
+
+```{r}
+calibration_truth <- demo$ETA_CL[1:80]
+calibration_pred <- calibration_truth + rnorm(80, sd = 0.2)
+new_pred <- c(-0.5, 0, 0.5)
+
+px_conformal(calibration_truth, calibration_pred, new_pred, alpha = 0.1)
+```
+
+# Interpretation
+
+The known signal in this synthetic example is `COV_WT` for `ETA_CL`. A useful
+screening method should rank `COV_WT` highly. This is a functional demonstration,
+not proof of real-world clinical validity.

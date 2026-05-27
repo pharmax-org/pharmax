@@ -1,0 +1,22 @@
+url: https://pharmax-org.github.io/pharmax
+template:
+  bootstrap: 5
+reference:
+  - title: Theme and scales
+    contents:
+      - theme_pharmax
+      - px_colors
+      - scale_color_pharmax
+      - scale_fill_pharmax
+  - title: Plots
+    contents:
+      - px_spaghetti
+      - px_gof
+      - px_residuals
+      - px_vpc
+      - px_npde
+      - px_forest
+      - px_plot_grid
+  - title: Export
+    contents:
+      - px_save

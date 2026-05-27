@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use pharmax, please cite the repository."
+title: "pharmax: Public R package proof slice for tidy, reproducible pharmacometrics"
+type: software
+authors:
+  - family-names: Okour
+    given-names: Malek
+repository-code: "https://github.com/pharmax-org/pharmax"
+url: "https://pharmax-org.github.io/pharmax/"
+license: MIT
+version: 0.3.0-public
+date-released: 2026-05-27
+keywords:
+  - pharmacometrics
+  - model-informed drug development
+  - R
+  - machine learning
+  - visualization
+abstract: >-
+  pharmax is a public R package proof slice for tidy, reproducible
+  pharmacometric workflows, currently including a package coordinator,
+  visualization helpers, and R-native exploratory machine learning utilities.

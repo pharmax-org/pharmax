@@ -1,0 +1,75 @@
+---
+title: "Diagnostic Plot Gallery With Public and Synthetic Data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Diagnostic Plot Gallery With Public and Synthetic Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+# Purpose
+
+This gallery shows the `pharmax.viz` diagnostic helpers using public and
+synthetic data. It is intended for exploratory model review, not regulatory
+validation.
+
+```{r setup}
+library(pharmax.viz)
+```
+
+# Public Theophylline Profiles
+
+```{r}
+theoph <- datasets::Theoph
+theoph_plot <- px_spaghetti(
+  data.frame(
+    ID = theoph$Subject,
+    TIME = theoph$Time,
+    DV = theoph$conc
+  )
+)
+theoph_plot
+```
+
+# Synthetic Diagnostics
+
+```{r}
+set.seed(2026)
+demo <- data.frame(
+  TIME = rep(c(0.5, 1, 2, 4, 8), each = 30),
+  DV = abs(rnorm(150, 4, 1)),
+  PRED = abs(rnorm(150, 4.1, 0.9)),
+  SIM = abs(rnorm(150, 4.2, 1.1)),
+  CWRES = rnorm(150),
+  NPDE = rnorm(150)
+)
+```
+
+```{r}
+px_residuals(demo)
+```
+
+```{r}
+px_npde(demo)
+```
+
+```{r}
+px_vpc(demo, bins = 5)
+```
+
+# Forest Plot
+
+```{r}
+effects <- data.frame(
+  term = c("WT on CL", "AGE on V", "ALB on CL"),
+  estimate = c(0.25, -0.10, 0.18),
+  lower = c(0.05, -0.30, 0.02),
+  upper = c(0.45, 0.10, 0.34)
+)
+
+px_forest(effects)
+```

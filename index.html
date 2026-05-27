@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pharmax</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #101828;
+      --panel: #172033;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --line: rgba(255, 255, 255, 0.16);
+      --accent: #2dd4bf;
+      --accent-2: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0;
+    }
+    header {
+      min-height: 58vh;
+      display: grid;
+      align-content: center;
+      gap: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 16px;
+      font-size: 1.5rem;
+      letter-spacing: 0;
+    }
+    p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    a { color: var(--accent); }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .actions a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.04);
+    }
+    section {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    article {
+      min-height: 190px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    article h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      letter-spacing: 0;
+    }
+    code {
+      color: var(--accent-2);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    pre {
+      overflow-x: auto;
+      padding: 16px;
+      border-radius: 8px;
+      background: #0b1220;
+      border: 1px solid var(--line);
+    }
+    ul { color: var(--muted); padding-left: 20px; }
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+      header { min-height: auto; padding: 34px 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>pharmax</h1>
+      <p>
+        A conservative public proof-slice for tidy, reproducible R workflows in
+        pharmacometrics. This public repository shows package proof that can be
+        installed, tested, and reviewed without private strategy context.
+      </p>
+      <div class="actions">
+        <a href="https://github.com/pharmax-org/pharmax">GitHub</a>
+        <a href="https://github.com/pharmax-org/pharmax/tree/main/packages/pharmax.viz">pharmax.viz</a>
+        <a href="https://github.com/pharmax-org/pharmax/tree/main/packages/pharmax.ml">pharmax.ml</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Public Package Surface</h2>
+      <div class="grid">
+        <article>
+          <h3><code>pharmax</code></h3>
+          <p>Coordinator package with helpers that describe the current public package surface.</p>
+        </article>
+        <article>
+          <h3><code>pharmax.viz</code></h3>
+          <p>Visualization helpers for public and synthetic pharmacometric examples.</p>
+        </article>
+        <article>
+          <h3><code>pharmax.ml</code></h3>
+          <p>R-native exploratory ML helpers for synthetic benchmark workflows and human-reviewed evidence summaries.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Install</h2>
+      <pre><code>pak::pak("pharmax-org/pharmax/packages/pharmax")
+pak::pak("pharmax-org/pharmax/packages/pharmax.viz")
+pak::pak("pharmax-org/pharmax/packages/pharmax.ml")</code></pre>
+    </section>
+
+    <section>
+      <h2>Boundary</h2>
+      <ul>
+        <li>Exploratory package feedback only.</li>
+        <li>Public or synthetic examples only.</li>
+        <li>No autonomous clinical, dosing, or regulatory decision-making.</li>
+        <li>No private planning, business strategy, or product-platform commitments in this repo.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,117 @@
+# R / RStudio
+.Rproj.user
+.Rhistory
+.Rdata
+.RData
+.httr-oauth
+*.Rproj
+.Renviron
+
+# R package build artifacts
+*.tar.gz
+*.Rcheck/
+*.dll
+*.so
+*.dylib
+src/*.o
+src/*.d
+inst/doc/
+
+# Dependency caches
+renv/library/
+renv/local/
+renv/cellar/
+renv/lock/
+renv/staging/
+node_modules/
+.cache/
+
+# Data files - never commit clinical/proprietary data
+*.csv
+*.xpt
+*.sas7bdat
+*.xlsx
+*.xls
+*.rds
+*.rda
+*.RData
+*.fst
+*.parquet
+*.sav
+*.dta
+data-raw/
+
+# NONMEM outputs
+*.ext
+*.tab
+*.phi
+*.cov
+*.cor
+*.coi
+*.xml
+*.lst
+*.res
+*.ctl
+FDATA
+FSTREAM
+FREPORT
+PRDERR
+worker*/
+temp_dir/
+
+# Python/local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.eggs/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+._*
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+credentials.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Private/admin material belongs in pharmax-Admin, not this public repo.
+_ADMIN/
+_Admin/
+.claude/
+.Codex/
+CLAUDE.md
+PLAN1.md
+ROADMAP.md
+docs/launch/
+docs/superpowers/
+docs/white-paper/
+
+# Deferred packages are private until deliberately approved for public release.
+packages/pharmax.ai/
+packages/pharmax.api/
+packages/pharmax.app/
+packages/pharmax.valid/
+packages/pharmax.report/
+packages/pharmax.pk/
+packages/pharmax.nca/
+packages/pharmax.sim/
+packages/pharmax.data/
+
+# Misc
+*.log
+.playwright-mcp/

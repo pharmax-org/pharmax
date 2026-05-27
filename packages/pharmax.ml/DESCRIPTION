@@ -1,0 +1,36 @@
+Package: pharmax.ml
+Title: R-Native Machine Learning Helpers for Pharmacometrics
+Version: 0.3.0.9000
+Authors@R:
+    person("Malek", "Okour", , "malek@zajaly.com", role = c("aut", "cre"))
+Author: Malek Okour
+Maintainer: Malek Okour <malek@zajaly.com>
+Description: R-native machine learning helpers for exploratory pharmacometric
+    workflows. Includes covariate screening, conformal prediction intervals,
+    explainability helpers, data quality checks, ensemble summaries, synthetic
+    benchmarks, calibration summaries, and bounded evidence summaries.
+License: MIT + file LICENSE
+URL: https://github.com/pharmax-org/pharmax, https://pharmax-org.github.io/pharmax
+BugReports: https://github.com/pharmax-org/pharmax/issues
+Depends:
+    R (>= 4.1.0)
+Imports:
+    cli (>= 3.6.0),
+    dplyr (>= 1.1.0),
+    ggplot2 (>= 3.5.0),
+    glmnet (>= 4.1),
+    purrr,
+    ranger (>= 0.16.0),
+    rlang (>= 1.1.0),
+    stats,
+    tibble
+Suggests:
+    testthat (>= 3.0.0),
+    withr,
+    knitr,
+    rmarkdown
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3

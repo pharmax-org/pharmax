@@ -1,0 +1,29 @@
+Package: pharmax.viz
+Title: Pharmacometric Visualization for the pharmax Ecosystem
+Version: 0.2.0.9000
+Authors@R:
+    person("Malek", "Okour", , "malek@zajaly.com", role = c("aut", "cre"))
+Author: Malek Okour
+Maintainer: Malek Okour <malek@zajaly.com>
+Description: One-line pharmacometric diagnostic plots with modern aesthetics.
+    Creates goodness-of-fit panels, spaghetti plots, and publication-ready
+    exports with consistent theming for pharmacometric workflows.
+License: MIT + file LICENSE
+URL: https://github.com/pharmax-org/pharmax, https://pharmax-org.github.io/pharmax
+BugReports: https://github.com/pharmax-org/pharmax/issues
+Depends:
+    R (>= 4.1.0)
+Imports:
+    cli (>= 3.6.0),
+    ggplot2 (>= 3.5.0),
+    patchwork,
+    rlang (>= 1.1.0)
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3

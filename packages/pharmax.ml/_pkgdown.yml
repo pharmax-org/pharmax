@@ -1,0 +1,19 @@
+url: https://pharmax-org.github.io/pharmax/packages/pharmax.ml/
+
+reference:
+  - title: Covariate screening
+    contents:
+      - px_covariate
+      - px_benchmark_covariate
+      - px_simulate_covariates
+  - title: Intervals and calibration
+    contents:
+      - px_conformal
+      - px_bootstrap_uq
+      - px_calibrate_conformal
+  - title: Quality, explainability, and evidence
+    contents:
+      - px_data_quality
+      - px_explain
+      - px_ensemble
+      - px_ml_report

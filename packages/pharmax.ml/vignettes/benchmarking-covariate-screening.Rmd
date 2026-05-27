@@ -1,0 +1,72 @@
+---
+title: "Benchmarking ML Covariate Screening With Synthetic PK Parameters"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Benchmarking ML Covariate Screening With Synthetic PK Parameters}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+# Purpose
+
+This vignette demonstrates a synthetic benchmark workflow for `pharmax.ml`.
+It is exploratory decision support only. It does not establish clinical validity
+or regulatory validation.
+
+```{r setup}
+library(pharmax.ml)
+```
+
+# Generate Synthetic Scenarios
+
+```{r}
+known_signal <- px_simulate_covariates(n = 120, scenario = "known_signal", seed = 2026)
+missingness <- px_simulate_covariates(n = 120, scenario = "missingness", seed = 2026)
+
+head(known_signal)
+sum(is.na(missingness))
+```
+
+# Run A Small Benchmark
+
+```{r}
+benchmark <- px_benchmark_covariate(
+  scenarios = c("known_signal", "no_signal", "correlated", "missingness"),
+  replicates = 3,
+  n = 100,
+  method = "cor",
+  seed = 2026
+)
+
+benchmark
+```
+
+```{r}
+plot(benchmark)
+```
+
+# Create A Decision-Support Report
+
+```{r}
+quality <- px_data_quality(known_signal, impute = "median")
+screen <- px_covariate(quality$data, method = "auto", n_top = 3, seed = 2026)
+calibration <- px_calibrate_conformal(
+  truth = known_signal$ETA_CL[1:40],
+  lower = known_signal$ETA_CL[1:40] - 0.5,
+  upper = known_signal$ETA_CL[1:40] + 0.5,
+  prediction = known_signal$ETA_CL[1:40],
+  alpha = 0.1
+)
+
+px_ml_report(
+  screen,
+  quality = quality,
+  calibration = calibration,
+  benchmark = benchmark,
+  context = list(context_of_use = "Synthetic covariate-screening demonstration")
+)
+```
