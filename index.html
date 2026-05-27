@@ -145,6 +145,13 @@
 
     <section>
       <h2>Install</h2>
+      <pre><code>options(repos = c(
+  pharmax = "https://pharmax-org.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
+
+install.packages(c("pharmax", "pharmax.viz", "pharmax.ml"))</code></pre>
+      <p class="note">Direct GitHub installs remain available for source checkout workflows.</p>
       <pre><code>pak::pak("pharmax-org/pharmax/packages/pharmax")
 pak::pak("pharmax-org/pharmax/packages/pharmax.viz")
 pak::pak("pharmax-org/pharmax/packages/pharmax.ml")</code></pre>
